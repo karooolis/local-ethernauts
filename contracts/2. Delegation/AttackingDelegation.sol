@@ -2,8 +2,6 @@
 pragma solidity ^0.8.9;
 import "./Delegation.sol";
 
-import "hardhat/console.sol";
-
 contract AttackingDelegation {
     address public contractAddress;
 
